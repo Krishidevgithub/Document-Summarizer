@@ -121,20 +121,9 @@ Backend will be live at 👉 http://localhost:8000
 
 7️⃣ Frontend Setup
 
-No framework needed! Just open the file:
-
-cd frontend
-start index.html        # Windows
-open index.html         # Mac
-
-
-Or serve via simple HTTP server:
-
-python -m http.server 5500
+ Go to Root folder --> Document Summarizer --> frontend --> index.html --> Double Click on it 
 
 Frontend 👉 http://localhost:5500
-
-OR Simply go to index.html in your folder nd run it using live server(RECOMMENDED)
 
 🔗 API Endpoints
 POST /upload-resume
