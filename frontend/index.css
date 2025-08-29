@@ -1,0 +1,375 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  color: #333;
+}
+
+.navbar {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #667eea;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.logo::before {
+  content: "📄";
+  font-size: 1.5rem;
+}
+
+.nav-tabs {
+  display: flex;
+  gap: 1rem;
+}
+
+.nav-tab {
+  padding: 0.75rem 1.5rem;
+  background: transparent;
+  border: 2px solid #667eea;
+  border-radius: 25px;
+  color: #667eea;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.nav-tab:hover,
+.nav-tab.active {
+  background: #667eea;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.page {
+  display: none;
+  animation: fadeIn 0.5s ease-in;
+}
+
+.page.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.upload-section {
+  background: white;
+  border-radius: 20px;
+  padding: 3rem;
+  text-align: center;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+}
+
+.upload-title {
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.upload-subtitle {
+  font-size: 1.2rem;
+  color: #666;
+  margin-bottom: 2rem;
+}
+
+.upload-area {
+  border: 3px dashed #667eea;
+  border-radius: 15px;
+  padding: 3rem;
+  margin: 2rem 0;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  background: #f8f9ff;
+}
+
+.upload-area:hover {
+  border-color: #764ba2;
+  background: #f0f2ff;
+  transform: translateY(-5px);
+}
+
+.upload-area.dragover {
+  border-color: #764ba2;
+  background: #e8ebff;
+  transform: scale(1.02);
+}
+
+.upload-icon {
+  font-size: 4rem;
+  color: #667eea;
+  margin-bottom: 1rem;
+}
+
+.upload-text {
+  font-size: 1.3rem;
+  color: #333;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.upload-subtext {
+  color: #666;
+  font-size: 1rem;
+}
+
+#fileInput {
+  display: none;
+}
+
+.file-info {
+  background: #e8f4fd;
+  border: 1px solid #b3d9f7;
+  border-radius: 10px;
+  padding: 1rem;
+  margin: 1rem 0;
+  display: none;
+  text-align: left;
+}
+
+.file-name {
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.file-size {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.generate-btn {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 25px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+  display: none;
+}
+
+.generate-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+}
+
+.generate-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.summary-box {
+  background: white;
+  border-radius: 15px;
+  padding: 2rem;
+  margin-top: 2rem;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  display: none;
+  border-left: 5px solid #667eea;
+  max-height: 400px; /* 🆕 makes sure large summaries don’t overflow */
+  overflow-y: auto;
+}
+
+.summary-title {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.summary-content {
+  color: #444;
+  line-height: 1.6;
+  font-size: 1rem;
+  white-space: pre-line; /* 🆕 preserves line breaks from backend */
+}
+
+.history-list {
+  background: white;
+  border-radius: 15px;
+  padding: 2rem;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.history-title {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 2rem;
+  font-weight: 700;
+}
+
+.history-item {
+  background: #f8f9ff;
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  border-left: 4px solid #667eea;
+  transition: all 0.3s ease;
+}
+
+.history-item:hover {
+  transform: translateX(5px);
+  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+}
+
+.history-item-name {
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.history-item-date {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.empty-history {
+  text-align: center;
+  color: #666;
+  font-style: italic;
+  padding: 2rem;
+}
+
+.error-message {
+  background: #ffe6e6;
+  border: 1px solid #ffb3b3;
+  color: #cc0000;
+  padding: 1rem;
+  border-radius: 10px;
+  margin: 1rem 0;
+  display: none;
+}
+
+.loading {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 3px solid #f3f3f3;
+  border-top: 3px solid #667eea;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-right: 10px;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+#fileInfo,
+#errorMessage,
+#summaryBox {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 1rem;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .container {
+    padding: 1rem;
+  }
+
+  .upload-section {
+    padding: 2rem 1rem;
+  }
+
+  .upload-title {
+    font-size: 2rem;
+  }
+
+  .upload-area {
+    padding: 2rem 1rem;
+  }
+
+  .nav-tabs {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .summary-box {
+    max-height: 300px;
+  }
+}
+.show-summary-btn {
+  margin-top: 8px;
+  padding: 8px 16px;
+  background-color: #2563eb; /* same accent blue */
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  display: inline-block;
+}
+
+.show-summary-btn:hover {
+  background-color: #1e40af; /* darker blue on hover */
+  transform: scale(1.03);
+}
+
+.show-summary-btn:active {
+  background-color: #1c3aa9;
+  transform: scale(0.98);
+}

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PDF Insight - AI Document Summarizer</title>
+    <!-- Link CSS -->
+    <link rel="stylesheet" href="./index.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="logo">Document Summarizer</div>
+      <div class="nav-tabs">
+        <button class="nav-tab active" onclick="showPage('home', event)">
+          Home
+        </button>
+        <button class="nav-tab" onclick="showPage('history', event)">
+          History
+        </button>
+      </div>
+    </nav>
+
+    <div class="container">
+      <!-- Home Page -->
+      <div id="home" class="page active">
+        <div class="upload-section">
+          <h1 class="upload-title">AI-Powered Document Insight Tool</h1>
+          <p class="upload-subtitle">
+            Upload your PDF documents and get instant AI-generated summaries
+          </p>
+
+          <div class="upload-area">
+            <div class="upload-icon">📁</div>
+            <div class="upload-text">Click to upload file or drag and drop</div>
+            <div class="upload-subtext">PDF files only (Max 10MB)</div>
+          </div>
+
+          <!-- Hidden input -->
+          <label for="fileInput" class="visually-hidden">Upload PDF file</label>
+          <input type="file" id="fileInput" accept=".pdf" />
+
+          <div id="fileInfo" class="file-info">
+            <div id="fileName" class="file-name"></div>
+            <div id="fileSize" class="file-size"></div>
+          </div>
+
+          <div id="errorMessage" class="error-message"></div>
+
+          <button id="generateBtn" class="generate-btn" type="button">
+            Generate Summary
+          </button>
+        </div>
+
+        <div id="summaryBox" class="summary-box">
+          <h3 class="summary-title">📋 Document Summary</h3>
+          <div id="summaryContent" class="summary-content"></div>
+        </div>
+      </div>
+
+      <!-- History Page -->
+      <div id="history" class="page">
+        <div class="history-list">
+          <h2 class="history-title">📚 Upload History</h2>
+          <div id="historyContent">
+            <div class="empty-history">
+              No uploads yet. Upload your first PDF to get started!
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Link JS -->
+    <script src="./index.js"></script>
+  </body>
+</html>

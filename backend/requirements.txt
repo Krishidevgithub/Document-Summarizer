@@ -1,0 +1,8 @@
+fastapi
+uvicorn[standard]
+python-multipart       # for form/file uploads
+pypdf                  # PDF text extraction
+requests               # call Sarvam
+SQLAlchemy
+alembic                # optional, for migrations (optional)
+python-dotenv          # load .env during dev
